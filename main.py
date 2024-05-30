@@ -9,7 +9,7 @@ RIGHT_KEY = 'd'
 UP_KEY = 'w'
 DOWN_KEY = 's'
 INTERACT_KEY = 'e'
-TIME_PER_SPACE = 0.16
+TIME_PER_SPACE = 0.16 #changes
 TIME_TO_TURN = 0.105
 
 class Direction(Enum):
