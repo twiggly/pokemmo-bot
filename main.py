@@ -167,13 +167,13 @@ def check_for_pokemon(pokemon_images, timeout=2):
     """Check for a Pokémon within the specified timeout period."""
     start_time = time.time()
     while time.time() - start_time < timeout:
+        print("Checking scren...")
         pokemon = locate_pokemon_on_screen(pokemon_images)
         if pokemon:
             print(f"You are facing a {pokemon}!")
             return pokemon
         time.sleep(0.1)
-        print("Checking...")
-    print("No pokemon found.")
+    print("No pokemon encountered.")
     return None
 
 def pokemon_still_alive(pokemon_images, min_alive_time=2):
