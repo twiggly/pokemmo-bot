@@ -1,6 +1,9 @@
 # pokemmo-bot
 Beat the game with no hands.
 
+# Progess
+Movement is accurate when moving between 1 and 10 steps at a time
+
 # macOS / Linux
 ## Create a virtual environment (run once)
 ```python3 -m venv .venv```
