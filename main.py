@@ -11,11 +11,9 @@ DOWN_KEY = 's'
 INTERACT_KEY = 'e'
 TIME_PER_SPACE = 0.165
 TIME_TO_TURN = 0.08
-#0.06
-#0.11
 
-#0.16
-#0.11
+#0.06 0.11
+#0.16 0.11
 
 class Direction(Enum):
     LEFT = 'L'
@@ -90,29 +88,29 @@ def heal_at_pc():
     move_down(1)
 
 def test_movement():
-    move_left(10)
+    move_left(1)
     move_left(10)
     move_right(10)
-    move_right(10)
+    move_right(1)
 
-def randomise():
-    return random.uniform(0.9, 1.1)
+def humanise():
+    return random.uniform(0.95, 1.05)
 
 def test_turning():
     while True:
         hold = 0.05
         with pyautogui.hold(RIGHT_KEY):
-            pyautogui.sleep(hold * randomise())
-        time.sleep(0.1 * randomise())
+            pyautogui.sleep(hold * humanise())
+        time.sleep(0.1 * humanise())
         with pyautogui.hold(UP_KEY):
-            pyautogui.sleep(hold * randomise())
-        time.sleep(0.1 * randomise())
+            pyautogui.sleep(hold * humanise())
+        time.sleep(0.1 * humanise())
         with pyautogui.hold(LEFT_KEY):
-            pyautogui.sleep(hold * randomise())
-        time.sleep(0.1 * randomise())
+            pyautogui.sleep(hold * humanise())
+        time.sleep(0.1 * humanise())
         with pyautogui.hold(DOWN_KEY):
-            pyautogui.sleep(hold * randomise())
-        time.sleep(0.1 * randomise())
+            pyautogui.sleep(hold * humanise())
+        time.sleep(0.1 * humanise())
 
 def run_back_and_forth():
     """Randomly run back and forth continuously staying within 3 spaces of the original position."""
