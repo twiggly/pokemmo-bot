@@ -95,29 +95,24 @@ def test_movement():
     move_right(10)
     move_right(10)
 
-def test_turn():
-    hold = 0.05
-    with pyautogui.hold(RIGHT_KEY):
-        pyautogui.sleep(hold)
-    time.sleep(0.4)
-    with pyautogui.hold(LEFT_KEY):
-        pyautogui.sleep(hold)
-    time.sleep(0.4)
-    with pyautogui.hold(RIGHT_KEY):
-        pyautogui.sleep(hold)
+def randomise():
+    return random.uniform(0.9, 1.1)
 
-    #pyautogui.keyDown(LEFT_KEY)
-    #time.sleep(0.01)
-    #yautogui.keyUp(LEFT_KEY)
-    #time.sleep(random.uniform(3.9, 4.1))
-    #pyautogui.keyDown(LEFT_KEY)
-    #time.sleep(0.01)
-    #pyautogui.keyUp(LEFT_KEY)
-    #time.sleep(random.uniform(3.9, 4.1))
-    #pyautogui.keyDown(RIGHT_KEY)
-    #time.sleep(0.01)
-    #pyautogui.keyUp(RIGHT_KEY)
-
+def test_turning():
+    while True:
+        hold = 0.05
+        with pyautogui.hold(RIGHT_KEY):
+            pyautogui.sleep(hold * randomise())
+        time.sleep(0.1 * randomise())
+        with pyautogui.hold(UP_KEY):
+            pyautogui.sleep(hold * randomise())
+        time.sleep(0.1 * randomise())
+        with pyautogui.hold(LEFT_KEY):
+            pyautogui.sleep(hold * randomise())
+        time.sleep(0.1 * randomise())
+        with pyautogui.hold(DOWN_KEY):
+            pyautogui.sleep(hold * randomise())
+        time.sleep(0.1 * randomise())
 
 def run_back_and_forth():
     """Randomly run back and forth continuously staying within 3 spaces of the original position."""
@@ -240,7 +235,7 @@ def main_menu():
         "5": ("Run from Grass to PC", run_from_grass_to_pc),
         "6": ("Heal at PC", heal_at_pc),
         "7": ("Test movement", test_movement),
-        "8": ("Test turn", test_turn)
+        "8": ("Test turning", test_turning)
     }
 
     while True:
