@@ -1,5 +1,6 @@
 # pokemmo-bot
 Beat the game with no hands.
+Face the character down and activate running shoes before selecting options.
 
 # Progess
 1. Movement is accurate when moving between 1 and 10 steps at a time.
