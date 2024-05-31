@@ -4,6 +4,11 @@ Beat the game with no hands.
 # Progess
 1. Movement is accurate when moving between 1 and 10 steps at a time.
 
+# Issues
+1. 'XP Grind' only set up for the macbook air resolution (simple fix)
+2. 'XP Grind' only works for pokemon who have their name saved in the screenshots folder
+3. 'XP Grind' likely kills the shiny version of pokemon
+
 # macOS / Linux
 ## Create a virtual environment (run once)
 ```python3 -m venv .venv```
