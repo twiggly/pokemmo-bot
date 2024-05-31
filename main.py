@@ -9,8 +9,13 @@ RIGHT_KEY = 'd'
 UP_KEY = 'w'
 DOWN_KEY = 's'
 INTERACT_KEY = 'e'
-TIME_PER_SPACE = 0.16
-TIME_TO_TURN = 0.105 # big changes incoming
+TIME_PER_SPACE = 0
+TIME_TO_TURN = 0.1
+#0.06
+#0.11
+
+#0.16
+#0.11
 
 class Direction(Enum):
     LEFT = 'L'
@@ -27,16 +32,14 @@ def wait(min_wait=0, max_wait=0.1):
 def move(direction_key, direction_enum, spaces=1):
     """Move in a specified direction a certain number of spaces."""
     global DIRECTION_FACING
-    turn_time = TIME_TO_TURN if DIRECTION_FACING != direction_enum else 0
-    if DIRECTION_FACING == direction_enum:
-        print("Facing foward")
-    else:
-        print("Turning")
-
-    pyautogui.keyDown(direction_key)
-    time.sleep(TIME_PER_SPACE * spaces + random.uniform(0, 0) + turn_time)
-    pyautogui.keyUp(direction_key)
-    wait(0.6, 0.7)
+    if DIRECTION_FACING != direction_key: # turn character if not facing
+        with pyautogui.hold(direction_key):
+            pyautogui.sleep(random.uniform(0.04, 0.06))
+    wait(0.4,0.6)
+    hold = TIME_PER_SPACE * spaces
+    with pyautogui.hold(direction_key):
+        pyautogui.sleep(hold)
+    wait(0.4, 0.6)
     DIRECTION_FACING = direction_enum
 
 def move_left(spaces=1):
@@ -89,16 +92,34 @@ def heal_at_pc():
     pyautogui.keyUp(INTERACT_KEY)
     move_down(1)
 
-def run_1_2():
-    move_up(1)
-    move_up(1)
-    move_up(2)
-    move_up(3)
-    
-    move_down(3)
-    move_down(2)
+def test_movement():
+    move_right(1)
+    move_left(1)
     move_down(1)
-    move_down(1)
+
+def test_turn():
+    hold = 0.09
+    with pyautogui.hold(RIGHT_KEY):
+        pyautogui.sleep(hold)
+    time.sleep(0.4)
+    with pyautogui.hold(LEFT_KEY):
+        pyautogui.sleep(hold)
+    time.sleep(0.4)
+    with pyautogui.hold(RIGHT_KEY):
+        pyautogui.sleep(hold)
+
+    #pyautogui.keyDown(LEFT_KEY)
+    #time.sleep(0.01)
+    #yautogui.keyUp(LEFT_KEY)
+    #time.sleep(random.uniform(3.9, 4.1))
+    #pyautogui.keyDown(LEFT_KEY)
+    #time.sleep(0.01)
+    #pyautogui.keyUp(LEFT_KEY)
+    #time.sleep(random.uniform(3.9, 4.1))
+    #pyautogui.keyDown(RIGHT_KEY)
+    #time.sleep(0.01)
+    #pyautogui.keyUp(RIGHT_KEY)
+
 
 def run_back_and_forth():
     """Randomly run back and forth continuously staying within 3 spaces of the original position."""
@@ -220,7 +241,8 @@ def main_menu():
         "4": ("Run from PC to Grass", run_from_pc_to_grass),
         "5": ("Run from Grass to PC", run_from_grass_to_pc),
         "6": ("Heal at PC", heal_at_pc),
-        "7": ("Run 1 2", run_1_2)
+        "7": ("Test movement", test_movement),
+        "8": ("Test turn", test_turn)
     }
 
     while True:
