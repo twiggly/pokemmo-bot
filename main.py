@@ -90,8 +90,10 @@ def heal_at_pc():
     move_down(1)
 
 def test_movement():
-    move_right(11)
-    move_left(11)
+    move_left(10)
+    move_left(10)
+    move_right(10)
+    move_right(10)
 
 def test_turn():
     hold = 0.05
