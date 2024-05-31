@@ -2,7 +2,7 @@
 Beat the game with no hands.
 
 # Progess
-Movement is accurate when moving between 1 and 10 steps at a time
+1. Movement is accurate when moving between 1 and 10 steps at a time.
 
 # macOS / Linux
 ## Create a virtual environment (run once)
