@@ -154,7 +154,7 @@ def run_to_pc():
     wait(2, 2.5)
     move_up(4)
 
-def locate_pokemon_on_screen(pokemon_images, confidence=0.99):
+def locate_pokemon_on_screen(pokemon_images, confidence=0.98):
     """Locate any of the specified Pokémon images on the screen."""
     for pokemon, image in pokemon_images.items():
         try:
@@ -204,7 +204,7 @@ def run_through_grass():
 def xp_grind():
     """XP Grind"""
     pokemon_images = {
-        #"HP Bar": "screenshots/7.png",
+        "HP Bar": "screenshots/7.png",
         "Ponyta": "screenshots/8.png",
         "Rattata": "screenshots/9.png",
         "Spearrow": "screenshots/10.png",
