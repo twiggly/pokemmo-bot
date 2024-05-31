@@ -9,8 +9,8 @@ RIGHT_KEY = 'd'
 UP_KEY = 'w'
 DOWN_KEY = 's'
 INTERACT_KEY = 'e'
-TIME_PER_SPACE = 0
-TIME_TO_TURN = 0.1
+TIME_PER_SPACE = 0.165
+TIME_TO_TURN = 0.08
 #0.06
 #0.11
 
@@ -32,11 +32,8 @@ def wait(min_wait=0, max_wait=0.1):
 def move(direction_key, direction_enum, spaces=1):
     """Move in a specified direction a certain number of spaces."""
     global DIRECTION_FACING
-    if DIRECTION_FACING != direction_key: # turn character if not facing
-        with pyautogui.hold(direction_key):
-            pyautogui.sleep(random.uniform(0.04, 0.06))
-    wait(0.4,0.6)
-    hold = TIME_PER_SPACE * spaces
+    turn_time = TIME_TO_TURN if DIRECTION_FACING != direction_enum else 0
+    hold = TIME_PER_SPACE * spaces + turn_time
     with pyautogui.hold(direction_key):
         pyautogui.sleep(hold)
     wait(0.4, 0.6)
@@ -93,12 +90,11 @@ def heal_at_pc():
     move_down(1)
 
 def test_movement():
-    move_right(1)
-    move_left(1)
-    move_down(1)
+    move_right(11)
+    move_left(11)
 
 def test_turn():
-    hold = 0.09
+    hold = 0.05
     with pyautogui.hold(RIGHT_KEY):
         pyautogui.sleep(hold)
     time.sleep(0.4)
