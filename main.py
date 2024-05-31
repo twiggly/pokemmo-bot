@@ -29,6 +29,7 @@ def wait(min_wait=0, max_wait=0.1):
 
 def move(direction_key, direction_enum, spaces=1):
     """Move in a specified direction a certain number of spaces."""
+    """Works when moving between 1 and 10 squares at a time"""
     global DIRECTION_FACING
     turn_time = TIME_TO_TURN if DIRECTION_FACING != direction_enum else 0
     hold = TIME_PER_SPACE * spaces + turn_time
