@@ -28,7 +28,7 @@ Face the character down and activate running shoes before selecting options.
 ```python -m venv .venv```
 
 ## Activate the virtual environment
-```.\.venv\Scripts\activate```
+```.venv\Scripts\activate```
 
 ## Install dependencies
 ```pip install -r requirements.txt```
